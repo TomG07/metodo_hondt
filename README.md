@@ -57,6 +57,57 @@ ou
 python3 main.py
 ```
 
+### Modo avançado (CSV e opções)
+
+Também pode executar com ficheiro CSV e escolher estratégias de desempate e ordenação:
+
+```bash
+# CSV com colunas: partido,votos
+python3 main.py --csv data/exemplo_partidos.csv --seats 7 --tie votes_alpha --show-table --sort-by seats
+```
+
+Opções disponíveis:
+
+- `--csv`: caminho para o CSV com as colunas `partido,votos`
+- `--seats`: número total de assentos a distribuir (obrigatório com `--csv`)
+- `--tie`: estratégia de desempate (`votes`, `alpha`, `input`, `random`, `votes_alpha`)
+- `--show-table`: mostra cada ronda com o vencedor e quociente
+- `--sort-by`: `seats` | `votos` | `nome` (default: `seats`)
+- `--asc`: ordena em ascendente (por defeito é descendente)
+
+### Exportar resultados
+
+```bash
+# Exportar para CSV (resultados e rondas)
+python3 main.py --csv data/exemplo_partidos.csv --seats 7 --out-csv outputs/resultados.csv
+
+# Exportar para JSON (inclui tabela de rondas)
+python3 main.py --csv data/exemplo_partidos.csv --seats 7 --out-json outputs/resultados.json
+```
+
+### Gráfico de Assentos
+
+Requer instalar dependências:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+Gerar gráfico:
+
+```bash
+python3 main.py --csv data/exemplo_partidos.csv --seats 7 --graph outputs/assentos.png
+```
+
+### Testes
+
+Instale dependências e execute:
+
+```bash
+python3 -m pip install -r requirements.txt
+pytest -q
+```
+
 ## 💡 Exemplo de Uso
 
 ```
