@@ -30,5 +30,3 @@ htmlcov/
 *.swp
 *.tmp
 *.old
-tests/
-requirements.txt
