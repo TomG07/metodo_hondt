@@ -1,0 +1,29 @@
+[MASTER]
+ignore-patterns=\n
+
+[MESSAGES CONTROL]
+disable=
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    C0103,  # invalid-name
+    C0301,  # line-too-long
+    C0415,  # import-outside-toplevel
+    R1705,  # no-else-return
+
+[FORMAT]
+max-line-length=120
+
+[BASIC]
+# Allow simple variable names
+good-names=i,j,k,x,y,z,_,p
+
+[REPORTS]
+output-format=colorized
+
+[TYPECHECK]
+ignored-modules=
+
+[DESIGN]
+max-args=10
+max-attributes=15

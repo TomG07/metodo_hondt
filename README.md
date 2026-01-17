@@ -105,7 +105,22 @@ Instale dependências e execute:
 
 ```bash
 python3 -m pip install -r requirements.txt
-pytest -q
+python3 -m pytest -q
+```
+
+### Lint (pylint)
+
+Instale dependências e rode o linter:
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 -m pylint main.py
+```
+
+Para rodar no seu ambiente virtual configurado automaticamente:
+
+```bash
+"/Users/tomasfrazao/Desktop/Projetos/Método_Hondt - Projeto Python/.venv/bin/python" -m pylint main.py
 ```
 
 ## 💡 Exemplo de Uso

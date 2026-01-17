@@ -116,11 +116,12 @@ def validar_partidos(partidos: List[Dict]) -> None:
 
 
 def ordenar_resultados(partidos: List[Dict], sort_by: str = "seats", desc: bool = True) -> List[Dict]:
-    chave = (
-        (lambda p: p["seats"]) if sort_by == "seats" else (
-            (lambda p: p["votos"]) if sort_by == "votos" else (lambda p: p["partido"].lower())
-        )
-    )
+    def chave(p: Dict) -> object:
+        if sort_by == "seats":
+            return p["seats"]
+        if sort_by == "votos":
+            return p["votos"]
+        return p["partido"].lower()
     return sorted(partidos, key=chave, reverse=desc)
 
 
@@ -167,13 +168,12 @@ def exportar_json(caminho: str, partidos: List[Dict], table_log: Optional[List[D
 def gerar_grafico(partidos: List[Dict], caminho: str) -> None:
     try:
         import matplotlib.pyplot as plt
-    except Exception:
+    except ImportError:
         print("Aviso: matplotlib não está disponível. Instale via 'pip install matplotlib'.")
         return
     os.makedirs(os.path.dirname(caminho) or ".", exist_ok=True)
     nomes = [p["partido"] for p in partidos]
     seats = [p["seats"] for p in partidos]
-    votos = [p["votos"] for p in partidos]
 
     fig, ax = plt.subplots(figsize=(8, 4.5))
     x = range(len(nomes))
