@@ -29,4 +29,4 @@ jobs:
 
             - name: Lint with pylint
               run: |
-                  python -m pylint main.py
+                  python -m pylint $(git ls-files '*.py')
